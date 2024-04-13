@@ -16,10 +16,6 @@ java {
     withJavadocJar()
 }
 
-dependencies {
-    implementation 'com.google.guava:guava:29.0-jre'
-}
-
 publishing {
     repositories {
         maven {
@@ -35,6 +31,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.java
+            artifactId = 'uco-crosscutting-hub'
         }
     }
 }
