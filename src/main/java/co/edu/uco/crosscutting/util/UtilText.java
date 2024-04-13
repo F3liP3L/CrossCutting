@@ -2,7 +2,7 @@ package co.edu.uco.crosscutting.util;
 
 import static co.edu.uco.crosscutting.util.UtilObject.getUtilObject;
 
-public class UtilText {
+public final class UtilText {
     private static final UtilText INSTANCE = new UtilText();
     public static final String EMPTY = "";
     public static final String LETTERS_AND_SPACES_ONLY = "^[a-zA-ZñÑ\\s]+$";

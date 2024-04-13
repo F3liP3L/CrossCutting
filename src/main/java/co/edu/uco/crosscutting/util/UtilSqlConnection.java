@@ -5,7 +5,7 @@ import co.edu.uco.crosscutting.exception.GeneralException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UtilSqlConnection {
+public final class UtilSqlConnection {
     public UtilSqlConnection() {}
 
     public static boolean isClosed(Connection sql) {

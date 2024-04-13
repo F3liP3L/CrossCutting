@@ -2,7 +2,7 @@ package co.edu.uco.crosscutting.util;
 
 import static co.edu.uco.crosscutting.util.UtilObject.getUtilObject;
 
-public class UtilNumeric {
+public final class UtilNumeric {
     private static final UtilNumeric INSTANCE = new UtilNumeric();
     public static final Byte ZERO = 0;
     private UtilNumeric() {}

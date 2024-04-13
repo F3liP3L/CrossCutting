@@ -1,6 +1,6 @@
 package co.edu.uco.crosscutting.util;
 
-public class UtilObject {
+public final class UtilObject {
     private static final UtilObject INSTANCE = new UtilObject();
     private UtilObject() {}
 
