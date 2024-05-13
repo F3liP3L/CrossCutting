@@ -34,11 +34,11 @@ public final class UtilUUID {
 
     public UUID getUUIDFromString(final String uuidString) {
         UUID uuid = DEFAULT_UUID;
-        if(!isNull(getStringToUUID(uuidString)) || ! getUtilText().isEmpty(getUtilText().trim(uuidString))) {
+        if(!getUtilText().isEmpty(getUtilText().trim(uuidString))) {
             try {
                 uuid = UUID.fromString(uuidString);
-            } catch (IllegalArgumentException excepcion) {
-                throw GeneralException.build("The UUID to be converted has no valid format.",excepcion);
+            } catch (IllegalArgumentException exception) {
+                throw GeneralException.build("The UUID to be converted has no valid format.",exception);
             } catch (Exception exception){
                 throw GeneralException.build("An unexpected error trying converted", exception);
             }
