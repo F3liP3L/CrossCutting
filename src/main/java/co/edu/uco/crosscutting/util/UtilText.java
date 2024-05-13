@@ -9,7 +9,7 @@ public final class UtilText {
     public static final String ANY_CHARACTER_EXCEPT_NUMBER = "[^\\d]";
     public static final String ONLY_NUMBERS = "\\d+";
     public static final String ONLY_ANY_NUMBER = "[-+]?\\d*\\.?\\d+";
-    private static final String ONLY_CHARACTERS_AND_NUMBERS = "^[a-zA-Z0-9]*$";
+    public static final String ONLY_CHARACTERS_AND_NUMBERS = "^[a-zA-Z0-9]*$";
     public static final String SPACE = " ";
     private UtilText() {}
     public static UtilText getUtilText() {
