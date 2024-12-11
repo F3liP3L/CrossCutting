@@ -5,19 +5,18 @@ import co.edu.uco.crosscutting.exception.GeneralException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static co.edu.uco.crosscutting.util.UtilObject.isNull;
+
 public final class UtilSqlConnection {
-    public UtilSqlConnection() {}
-
+    private UtilSqlConnection() {}
     public static boolean isClosed(Connection sql) {
-
-        if(UtilObject.getUtilObject().isNull(sql)) {
+        if(isNull(sql)) {
             throw GeneralException.build("Connection is null");
         }
         try {
             return sql.isClosed();
         } catch (SQLException exception) {
             throw GeneralException.build("Problems trying to validate if connection was closed", exception);
-
         }
     }
     public static boolean isOpen(Connection connection) {

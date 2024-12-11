@@ -4,26 +4,19 @@ import co.edu.uco.crosscutting.exception.GeneralException;
 
 import java.util.UUID;
 
-import static co.edu.uco.crosscutting.util.UtilObject.getUtilObject;
-import static co.edu.uco.crosscutting.util.UtilText.getUtilText;
+import static co.edu.uco.crosscutting.util.UtilObject.isNull;
+import static co.edu.uco.crosscutting.util.UtilText.*;
 
 public final class UtilUUID {
-    private static final UtilUUID INSTANCE = new UtilUUID();
     public static final String DEFAULT_UUID_STRING = "00000000-0000-0000-0000-000000000000";
     public final UUID DEFAULT_UUID = getStringToUUID(DEFAULT_UUID_STRING);
     private UtilUUID() {}
-    public static UtilUUID getUtilUUID() {
-        return INSTANCE;
-    }
-
     public UUID getDefaultUUID(final UUID uuid) {
-        return getUtilObject().getDefaultIsNull(uuid, DEFAULT_UUID);
+        return UtilObject.getDefaultIsNull(uuid, DEFAULT_UUID);
     }
-
     public boolean isEqual(final UUID uuidOne, final UUID uuidTwo) {
         return getDefaultUUID(uuidOne).equals(getDefaultUUID(uuidTwo));
     }
-
     public UUID getNewUUID() {
         UUID uuid;
         do {
@@ -31,10 +24,9 @@ public final class UtilUUID {
         } while (isEqual(uuid, DEFAULT_UUID));
         return uuid;
     }
-
     public UUID getUUIDFromString(final String uuidString) {
         UUID uuid = DEFAULT_UUID;
-        if(!getUtilText().isEmpty(getUtilText().trim(uuidString))) {
+        if(!isEmpty(trim(uuidString))) {
             try {
                 uuid = UUID.fromString(uuidString);
             } catch (IllegalArgumentException exception) {
@@ -45,7 +37,6 @@ public final class UtilUUID {
         }
         return uuid;
     }
-
     public String getStringFromUUID(final UUID uuid) {
         String uuidString = DEFAULT_UUID_STRING;
         if(!isNull(uuid)) {
@@ -53,12 +44,7 @@ public final class UtilUUID {
         }
         return uuidString;
     }
-
     public UUID getStringToUUID(final String uuid){
         return UUID.fromString(uuid);
-    }
-
-    public boolean isNull(UUID value) {
-        return UtilObject.getUtilObject().isNull(value);
     }
 }
