@@ -12,19 +12,19 @@ public final class UtilText {
     public static final String SPACE = " ";
     private UtilText() {}
     public static String getDefault(final String value,final String defaultValue) {
-        return getDefaultIsNull(value, defaultValue);
+        return getDefaultIsNull(value, getDefault(defaultValue));
     }
-    public static String getDefault(String value) {
+    public static String getDefault(final String value) {
         return getDefaultIsNull(value, EMPTY);
     }
-    public static String trim(String value) {return getDefault(value).trim();}
-    public static boolean isEmpty(String value) {
+    public static String trim(final String value) {return getDefault(value).trim();}
+    public static boolean isEmpty(final String value) {
         return EMPTY.equals(trim(value));
     }
-    public static boolean isContainsOnlyLetterAndSpace(String value) {
+    public static boolean isContainsOnlyLetterAndSpace(final String value) {
         return validMatch(value, LETTERS_AND_SPACES_ONLY);
     }
-    public static boolean validMatch(String value, String expression) {
+    public static boolean validMatch(final String value,final String expression) {
         return value.matches(expression);
     }
 }

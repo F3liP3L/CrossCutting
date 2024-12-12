@@ -17,48 +17,46 @@ public final class UtilDate {
             .optionalEnd()
             .toFormatter();
     public static final LocalDateTime TIME = LocalDateTime.now();
-    private static final UtilDate INSTANCE = new UtilDate();
-    public static UtilDate getUtilDate() {return INSTANCE;}
-    public Date getDefaultIsNull(Date value) {
+    public static Date getDefaultIsNull(Date value) {
         return UtilObject.getDefaultIsNull(value, new Date());
     }
-    public LocalDateTime getDefaultTime(LocalDateTime value, LocalDateTime defaultValue) {
+    public static LocalDateTime getDefaultTime(LocalDateTime value, LocalDateTime defaultValue) {
         return UtilObject.getDefaultIsNull(value,defaultValue);
     }
-    public LocalDateTime getDefaultTimeIfNull(LocalDateTime value) {
+    public static LocalDateTime getDefaultTimeIfNull(LocalDateTime value) {
         return getDefaultTime(value,TIME);
     }
-    public boolean isBetween(Date date, Date init, Date end) {
+    public static boolean isBetween(Date date, Date init, Date end) {
         return (date.after(init) && date.before(end));
     }
-    public boolean isBefore(Date compare, Date date) {
+    public static boolean isBefore(Date compare, Date date) {
         return compare.before(date);
     }
-    public boolean isBefore(Date compare) {
+    public static boolean isBefore(Date compare) {
         return compare.before(getLocalDataTimeADate(TIME));
     }
-    public boolean isBetweenIncludingInit(Date date, Date init, Date end) {
+    public static boolean isBetweenIncludingInit(Date date, Date init, Date end) {
         return (isBetween(date, init, end) || date.equals(init));
     }
-    public boolean isBetweenIncludingEnd(Date date, Date init, Date end) {
+    public static boolean isBetweenIncludingEnd(Date date, Date init, Date end) {
         return (isBetween(date, init, end) || date.equals(end));
     }
-    public boolean isBetweenIncludingRanges(Date date, Date init, Date end) {
+    public static boolean isBetweenIncludingRanges(Date date, Date init, Date end) {
         return (isBetweenIncludingEnd(date, init, end) || isBetweenIncludingInit(date, init, end));
     }
-    public LocalDate currentDate() {
+    public static LocalDate currentDate() {
         return LocalDate.now();
     }
-    public Date getLocalDateADate(LocalDate date) {
+    public static Date getLocalDateADate(LocalDate date) {
         return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
-    public LocalDate getDateALocalDate(Date date) {
+    public static LocalDate getDateALocalDate(Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
-    public Date getLocalDataTimeADate(LocalDateTime dateTime) {
+    public static Date getLocalDataTimeADate(LocalDateTime dateTime) {
         return Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
-    public LocalDateTime getDateALocalDateTime(Date date) {
+    public static LocalDateTime getDateALocalDateTime(Date date) {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 }
