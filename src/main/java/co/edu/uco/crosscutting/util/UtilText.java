@@ -1,9 +1,9 @@
 package co.edu.uco.crosscutting.util;
 
-import static co.edu.uco.crosscutting.util.UtilObject.getUtilObject;
+import static co.edu.uco.crosscutting.util.UtilObject.getDefaultIsNull;
+import static co.edu.uco.crosscutting.util.UtilObject.isNull;
 
 public final class UtilText {
-    private static final UtilText INSTANCE = new UtilText();
     public static final String EMPTY = "";
     public static final String LETTERS_AND_SPACES_ONLY = "^[a-zA-ZñÑ\\s]+$";
     public static final String ANY_CHARACTER_EXCEPT_NUMBER = "[^\\d]";
@@ -12,30 +12,23 @@ public final class UtilText {
     public static final String ONLY_CHARACTERS_AND_NUMBERS = "^[a-zA-Z0-9]*$";
     public static final String SPACE = " ";
     private UtilText() {}
-    public static UtilText getUtilText() {
-        return INSTANCE;
+    public static String getDefault(final String value,final String defaultValue) {
+        return getDefaultIsNull(value, getDefault(defaultValue));
     }
-
-    public boolean isNull(String value) {
-        return getUtilObject().isNull(value);
+    public static String getDefault(final String value) {
+        return getDefaultIsNull(value, EMPTY);
     }
-    public String getDefault(String value, String defaultValue) {
-        return getUtilObject().getDefaultIsNull(value, defaultValue);
-    }
-    public String getDefault(String value) {
-        return getUtilObject().getDefaultIsNull(value, EMPTY);
-    }
-
-    public String trim(String value) {return getDefault(value).trim();}
-
-    public boolean isEmpty(String value) {
+    public static String trim(final String value) {return getDefault(value).trim();}
+    public static boolean isEmpty(final String value) {
         return EMPTY.equals(trim(value));
     }
-
-    public boolean isContainsOnlyLetterAndSpace(String value) {
+    public static boolean isEmptyOrNull(final String value) {
+        return isEmpty(value) || isNull(value);
+    }
+    public static boolean isContainsOnlyLetterAndSpace(final String value) {
         return validMatch(value, LETTERS_AND_SPACES_ONLY);
     }
-    public boolean validMatch(String value, String expression) {
+    public static boolean validMatch(final String value,final String expression) {
         return value.matches(expression);
     }
 }
