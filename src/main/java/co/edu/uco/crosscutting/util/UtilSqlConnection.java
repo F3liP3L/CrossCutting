@@ -1,6 +1,6 @@
 package co.edu.uco.crosscutting.util;
 
-import co.edu.uco.crosscutting.exception.GeneralException;
+import co.edu.uco.crosscutting.exception.CrossCuttingException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,12 +11,12 @@ public final class UtilSqlConnection {
     private UtilSqlConnection() {}
     public static boolean isClosed(Connection sql) {
         if(isNull(sql)) {
-            throw GeneralException.build("Connection is null");
+            throw CrossCuttingException.build("Connection is null.");
         }
         try {
             return sql.isClosed();
         } catch (SQLException exception) {
-            throw GeneralException.build("Problems trying to validate if connection was closed", exception);
+            throw CrossCuttingException.build("Problems trying to validate if connection was closed.", exception);
         }
     }
     public static boolean isOpen(Connection connection) {

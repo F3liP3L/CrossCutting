@@ -1,10 +1,12 @@
 package co.edu.uco.crosscutting.util;
 
+import static co.edu.uco.crosscutting.util.UtilObject.getDefaultIsNull;
+
 public final class UtilNumeric {
     public static final Byte ZERO = 0;
     private UtilNumeric() {}
     public static  <T extends Number> T getDefault(T value, T defaultValue) {
-        return UtilObject.getDefaultIsNull(value, defaultValue);
+        return getDefaultIsNull(value, defaultValue);
     }
     public static <T extends Number> Number getDefault(T value) {
         return getDefault(value, ZERO);
