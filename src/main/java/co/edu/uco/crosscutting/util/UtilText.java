@@ -1,6 +1,7 @@
 package co.edu.uco.crosscutting.util;
 
 import static co.edu.uco.crosscutting.util.UtilObject.getDefaultIsNull;
+import static co.edu.uco.crosscutting.util.UtilObject.isNull;
 
 public final class UtilText {
     public static final String EMPTY = "";
@@ -20,6 +21,9 @@ public final class UtilText {
     public static String trim(final String value) {return getDefault(value).trim();}
     public static boolean isEmpty(final String value) {
         return EMPTY.equals(trim(value));
+    }
+    public static boolean isEmptyOrNull(final String value) {
+        return isEmpty(value) || isNull(value);
     }
     public static boolean isContainsOnlyLetterAndSpace(final String value) {
         return validMatch(value, LETTERS_AND_SPACES_ONLY);
